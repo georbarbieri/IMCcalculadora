@@ -1,0 +1,142 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito', sans-serif;
+}
+body{
+    background-color:#171a4a ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: white;
+}
+.hide{
+    display: none  !important;
+}
+.container {
+    min-width: 400px;
+    min-height: 400px;
+    background-color:#000020 ;
+    padding: 2rem;
+}
+/* IMC formulario*/
+#calculadora.container{
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.form-inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.form-control{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-bottom: 1rem;
+}
+
+.form-control label {
+    font-weight: bold;
+    margin-bottom: 0.6rem;
+    color: antiquewhite;
+}
+.form-control input {
+    padding: 1rem 0.5rem;
+}
+
+.action-control{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    gap: 1rem;
+}
+
+button{
+    text-transform: uppercase;
+    padding: 1rem 1.5rem;
+    background-color: #b96e48;
+    border:none;
+    color: white;
+    cursor: pointer;
+    opacity: 0.9;
+    flex: 1;
+}
+button :hover{
+    background-color: #8d4925;
+    transform: scale(1.1);
+    transition-duration: 1s;
+}
+#clear-btn {
+    background-color: #444;
+}
+
+/* Tabla*/
+
+#resultado-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+#imc-numero{
+    font-size: 2.4rem;
+    margin-bottom: 0.6rem;
+}
+#imc-informacion{
+    font-size: 1.4rem;
+    color: aliceblue;
+}
+
+#resultado-container h3{
+    margin-top: 1rem;
+    color: antiquewhite;
+}
+
+#imc-tabla{
+    margin: 1.5rem;
+    font-size: 1rem;
+}
+
+.titulo-tabla{
+    font-weight: bold;
+    color: azure;
+}
+
+.titulo-tabla,
+.dato-tabla{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #444;
+}
+
+.titulo-tabla h4,
+.dato-tabla p{
+    flex: 1;
+}
+
+.titulo-tabla h4:nth-child(3),
+.dato-tabla p:nth-child(3) {
+    max-width: 80px;
+}
+#back-btn {
+    align-self: center;
+}
+.good{
+    color: #00c040;
+}
+.low{
+    color: yellow;
+}
+.medium{
+    color: #db6212;
+}
+.medium-high{
+    color: #b72e00;
+}
+.high{
+    color: rgb(143, 16, 16);
+}
