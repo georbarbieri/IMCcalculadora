@@ -104,12 +104,9 @@ function calcImc(weight, height) {
 
 
 function cleanInputs() {
-    nameInput.value =""
-    heightInput.value = ""
-    weightInput.value =""
-    imcNumero.className = "";
-    imcInfo.className = "";
-
+    nameInput.value ="";
+    heightInput.value = "";
+    weightInput.value ="";
 }
 function showOrHideResultado(){
     calculadoraContainer.classList.toggle("hide");
@@ -141,11 +138,11 @@ calcBtn.addEventListener("click", (e) => {
     data.forEach((item)=> {
         if (imc >= item.min && imc <=item.max) {
             info = item.info;
-        }
+            return;
+        }console.log(info);
     });
 
-    if (!info) return;
-
+    if (!!info) return;
     imcNumero.innerText = imc;
     imcInfo.innerText = info;
 
@@ -182,7 +179,7 @@ calcBtn.addEventListener("click", (e) => {
     }
 
     showOrHideResultado();
-})
+});
 
 clearBtn.addEventListener("click", (e) => {
     e.preventDefault();
