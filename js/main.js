@@ -63,7 +63,7 @@ const resultadoContainer = document.querySelector("#resultado-container");
 
 const imcNumero = document.querySelector("#imc-numero span");
 
-const imcInfo = document.querySelector("imc-info span");
+const imcInfo = document.querySelector("#imc-info span");
 
 const backBtn = document.querySelector("#back-btn");
 
@@ -132,7 +132,7 @@ calcBtn.addEventListener("click", (e) => {
     const height = +heightInput.value.replace(",",".");
 
     if (!weight || !height) return;
-    const imc =calcImc(height, weight);
+    const imc =calcImc(weight, height);
 
     let info;
     data.forEach((item)=> {
@@ -142,7 +142,7 @@ calcBtn.addEventListener("click", (e) => {
         }console.log(info);
     });
 
-    if (!!info) return;
+    if (!info) return;
     imcNumero.innerText = imc;
     imcInfo.innerText = info;
 
@@ -188,5 +188,5 @@ clearBtn.addEventListener("click", (e) => {
 
 backBtn.addEventListener("click", (e) => {
     cleanInputs();
-    showOrHideResults();
+    showOrHideResults(hide);
     });  
