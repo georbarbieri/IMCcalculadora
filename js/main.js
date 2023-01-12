@@ -240,7 +240,7 @@ createTabla(data);
 
 calcBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    const peso = +pesotInput.value.replace(",",".");
+    const peso = +pesoInput.value.replace(",",".");
     const altura = +alturaInput.value.replace(",",".");
 
     if (!peso || !altura) return;
