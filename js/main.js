@@ -148,9 +148,9 @@ Swal
 
 const   imcTabla = document.querySelector("#imc-tabla");
 
-const heightInput = document.querySelector("#height");
+const alturaInput = document.querySelector("#altura");
 
-const weightInput = document.querySelector("#weight");
+const pesoInput = document.querySelector("#peso");
 
 const calcBtn = document.querySelector("#calc-btn");
 
@@ -209,16 +209,16 @@ function validDigits(text) {
 }
 
 
-function calcImc(weight, height) {
+function calcImc(peso, altura) {
 
-    const imc = (weight / (height * height)).toFixed(1);
+    const imc = (peso / (altura *altura)).toFixed(1);
     return imc
 }
 
 
 function cleanInputs() {
-    heightInput.value = "";
-    weightInput.value ="";
+    alturaInput.value = "";
+    pesoInput.value ="";
 }
 function showOrHideResultado(){
     calculadoraContainer.classList.toggle("hide");
@@ -230,7 +230,7 @@ createTabla(data);
 
 
 //Eventos
-[heightInput, weightInput].forEach((el) =>{
+[alturaInput, pesoInput].forEach((el) =>{
     el.addEventListener("input", (e)=> {
         const updateValue = validDigits(e.target.value);
         e.target.value =updateValue;
@@ -240,13 +240,13 @@ createTabla(data);
 
 calcBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    const weight = +weightInput.value.replace(",",".");
-    const height = +heightInput.value.replace(",",".");
+    const peso = +pesotInput.value.replace(",",".");
+    const altura = +alturaInput.value.replace(",",".");
 
-    if (!weight || !height) return;
-    const imc =calcImc(weight, height);
-    console.log(weight)
-    console.log(height)
+    if (!peso || !altura) return;
+    const imc =calcImc(peso, altura);
+    console.log(peso)
+    console.log(altura)
     let info;
     data.forEach((item)=> {
         if (imc >= item.min && imc <=item.max) {
