@@ -12,6 +12,18 @@ body{
     min-height: 100vh;
     color: white;
 }
+#titulo {
+    font-size: large;
+    font-family: 'Nunito', sans-serif;
+    justify-content: center;
+    text-align: center;
+}
+.form-signin {
+    width: 60%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
 .hide{
     display: none  !important;
 }
@@ -73,6 +85,19 @@ button :hover{
     background-color: #444;
 }
 
+#save-btn,
+#inicio-sesion {
+    text-transform: uppercase;
+    padding: 1rem 1.5rem;
+    background-color: #db6212;
+    border:none;
+    color: white;
+    cursor: pointer;
+    opacity: 0.7;
+    flex: 1;
+    align-self: center;
+    margin: 20px;
+}
 /* Tabla*/
 
 #resultado-container {
@@ -132,6 +157,7 @@ button :hover{
 }
 #back-btn {
     align-self: center;
+    background-color: #b96e48;
 }
 .good{
     color: #00c040;

@@ -5,54 +5,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de IMC JS</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap" rel="stylesheet">
-    <script defer src="./js/main.js"></script>
+    <link rel="shortcut icon" href="#">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>Clase 10 - Storage</title>
+    <script defer src="./js/script.js"></script>
 </head>
-<body>
-    <div class="container">
-        <div id="calculadora-container">
-            <h2>Calculadora de IMC</h2>
-            <form id="imc-form">
-                <div class="form-inputs">
-                    <div class="form-control">
-                        <label for="name">Nombre:</label>
-                        <input type="text" name="name" id="name" placeholder="Ejemplo Antonella"/>
-                    </div>
-                    <div class="form-control">
-                        <label for="height">Altura:</label>
-                        <input type="text" name="height" id="height" placeholder="Ejemplo 1,75 "/>
-                    </div>
-                    <div class="form-control">
-                        <label for="weight">Peso:</label>
-                        <input type="text" name="weight" id="weight" placeholder="Ejemplo 72,3 kg"/>
-                    </div>
-                </div>
-                    <div class="action-control">
-                        <button id="calc-btn">Calcular</button>
-                        <button id="clear-btn">Borrar Datos</button>
-                    </div>
-            </form>
-        </div>
-        <div id="resultado-container" class="hide" >
-            <p id="imc-numero"> El IMC es de: <span ></span></p>
-            <p id="imc-info">La situacion en la cual se encuentra es: <span ></span></p>
-            <h3>Tabla de IMC</h3>
-                <div id="imc-tabla">
-                    <div class="titulo-tabla">
-                        <h4>Tabla IMC</h4>
-                        <h4>Clasificación</h4>
-                        <h4>Obesidad</h4>
-                    </div>
-                </div>
-                <h5>Sea cual sea el resultado, no hay que preocuparse.
-                Lo primero que debes hacer es buscar un especialista de confianza. Puede ser cardiólogo, endocrinólogo, nutriólogo, nutricionista, gastroenterólogo, en definitiva, buscar ayuda profesional y no creer en milagros. La obesidad es una enfermedad que se combate todos los días, día tras día.</h5>
 
-                <button id="back-btn">Volver</button>
-        </div>
-    </div>
+<body>
+    <h1 id="titulo">Centro Médico Vazquez</h1>
+    <h2>Donde la salud es primero</h2>
+    <main class="form-signin">
+        <form>
+            <h3 class="h3 mb-3 fw-normal">Ingresar al sitio</h3>
+
+            <div class="form-floating my-3">
+                <input type="email" class="form-control" id="emailAddress" placeholder="nombre@mail.com">
+                <label for="emailAddress">Dirección de correo</label>
+            </div>
+            <div class="form-floating my-3">
+                <input type="password" class="form-control" id="password" placeholder="Contraseña">
+                <label for="password">Contraseña</label>
+            </div>
+
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" id="rememberMe" value="remember-me">Recordarme en este navegador
+                </label>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary my-1" id="btnLogin" type="submit" > <a href="./calculadora.html"> Iniciar sesión</a>
+               </button>
+            <button class="w-100 btn btn-lg btn-danger my-1" id="btnVaciarLocalStorage" type="submit">Borrar todos los
+                datos</button>
+        </form>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+
+        </script>
+
 </body>
+
 </html>
