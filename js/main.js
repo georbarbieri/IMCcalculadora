@@ -43,107 +43,6 @@ const data = [
     },
 ];
 
-const usuarios = [{
-    nombre: "Belen",
-    mail: "belu@gmail.com",
-    pass: "belen22",
-},{
-    nombre: "Barbara",
-    mail: "barbi@gmail.com",
-    pass: "barbi20",
-},{
-    nombre: "Raul",
-    mail: "raul@gmail.com",
-    pass: "raul2022",
-},{
-    nombre: "User",
-    mail: "user@gmail.com",
-    pass: "1234",
-}];
-
-let emailUsuario = document.getElementById('emailAddress');
-let password = document.getElementById('password');
-let btnLogin = document.querySelector('#btnLogin');
-let btnVaciar = document.getElementById('btnVaciarLocalStorage');
-
-if (btnLogin) {
-    btnLogin.addEventListener('click', () => {
-        localStorage.setItem('email', JSON.stringify(emailUsuario.value));
-        localStorage.setItem('password', JSON.stringify(password.value));
-        const Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-                toast.addEventListener('mouseenter', Swal.stopTimer)
-                toast.addEventListener('mouseleave', Swal.resumeTimer)
-            }
-        })
-
-        Toast.fire({
-            icon: 'success',
-            title: 'Logeado correctamente'
-        });
-    })
-}
-if(location.href == '../calculadora.html'){
-    let user = document.querySelector('#user');
-    user.innerText = localStorage.getItem('email') || 'Iniciar sesion'
-}
-
-if (btnVaciar) {
-    btnVaciar.addEventListener('click', (e) => {
-        localStorage.clear();
-        Swal.fire({
-            title: 'Se han borrado todos los datos',
-            icon: 'error',
-            confirmButtonText: 'Cool'
-        })
-        e.preventDefault();
-    })
-}
-
-function guardarDatos(storage) {
-
-    let user = document.getElementById('emailAddress').value;
-    let pass = document.getElementById('password').value;
-
-    const usuario = {
-        "user": user,
-        "pass": pass
-    }
-
-    storage.setItem('user', JSON.stringify(usuario))
-}
-
-function borrarDatos(storage) {
-    storage.clear();
-}
-
-Swal
-    .fire({
-        title: "Tu nombre",
-        input: "text",
-        showCancelButton: true,
-        confirmButtonText: "Guardar",
-        cancelButtonText: "Cancelar",
-        inputValidator: nombre => {
-            if (!nombre) {
-                return "Por favor escribe tu nombre";
-            } else {
-                return undefined;
-            }
-        }
-    })
-    .then(resultado => {
-        if (resultado.value) {
-            let nombre = resultado.value;
-            console.log("Hola, " + nombre);
-        }
-    });
-
 /*Seleccion de elementos*/
 
 const   imcTabla = document.querySelector("#imc-tabla");
@@ -168,18 +67,6 @@ const backBtn = document.querySelector("#back-btn");
 
 /*Funciones*/
 
-function guardarDatos(storage) {
-
-    let user = document.getElementById('#emailAddress').value;
-    let pass = document.getElementById('#password').value;
-
-    const usuario = {
-        "user": user,
-        "pass": pass
-    }
-
-    storage.setItem('user', JSON.stringify(usuario))
-}
 
 function createTabla(data) {
     data.forEach((item) => {

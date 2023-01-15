@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>inicio de sesion</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-light $blue-800">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="./index.html"><img src="./img/Azul_Oscuro_y_Celeste_Moderno_con_Gradiente_para_Centro_Médico_Logo_de_Salud-removebg-preview.png" alt="Logo Centro de Salud"></a>
+            <form class="d-flex">
+                <button class="btn btn-light" type="submit"><a href="./index.html"> Inicio</a></button>
+            </form>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="contenedorTodo">
+            <div class="cajaTrasera">
+                <div class="cajaTraseraLogin">
+                    <h3>¿Ya tienes cuenta?</h3>
+                    <p>Inicia sesión para entrar a la página</p>
+                    <button id="btn-iniciarSesion">Iniciar Sesión</button>
+                </div>
+                <div class="cajaTraseraRegistro">
+                    <h3>¿Aún no tienes cuenta?</h3>
+                    <p>Registrate para que puedas iniciar sesión</p>
+                    <button id="btn-registrarse">Registrarse</button>
+                </div>
+            </div>
+            <div class="contenedorLoginRegistro">
+                <form action="" class="formularioLogin">
+                    <h2>Iniciar Sesión</h2>
+                    <input type="text" name="user" id="emailAddress" class="input-box" placeholder="Correo Electrónico">
+                    <input type="password" name="password" id="password" class="input-box" placeholder="Contraseña"
+                    >
+                    <label>
+                        <input type="checkbox" id="rememberMe" value="remember-me">Recordarme en este navegador
+                    </label>
+                    <button id="btnLogin"><a href="./index.html">Entrar</a> </button>
+                </form>
+            
+            <form action="" class="formularioRegistro">
+                <h2>Registrarse</h2>
+                <input type="text" placeholder="Nombre Completo">
+                <input type="text" id="emailAddress"
+                placeholder="Correo Electrónico">
+                <input type="password" id="password" placeholder="Contraseña">
+                
+                <button id="btnRegistro">Registrarse</button>
+            </form>
+        </div>
+        </div>
+        </div>
+    </main>
+    <script defer src="./js/scrips.js"></script>
+    <script src="./js/localStorage.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>
