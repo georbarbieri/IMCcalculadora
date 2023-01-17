@@ -112,7 +112,7 @@ function showOrHideResultado(){
     resultadoContainer.classList.toggle("hide");
 }
 
-/*Iniciacion*/
+
 createTabla(data);
 
 
@@ -180,6 +180,10 @@ calcBtn.addEventListener("click", (e) => {
 
     showOrHideResultado();
 });
+
+let h3 = document.getElementById("saludo")
+h3.innerText =`Logueado como ${localStorage.getItem("email")}`;
+
 
 clearBtn.addEventListener("click", (e) => {
     e.preventDefault();

@@ -19,6 +19,6 @@ function guardarDatos(storage) {
         "password": pass,
     }
 
-    storage.setItem('user', JSON.stringify(usuario))
-    storage.setItem('password', JSON.stringify(usuario))
+    localStorage.setItem('user', JSON.stringify(usuario))
+    localStorage.setItem('password', JSON.stringify(usuario))
 }
