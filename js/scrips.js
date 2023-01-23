@@ -63,3 +63,84 @@ function register (){
     
 }
 
+const usuarios = [{
+    nombre: 'Azul',
+    mail: 'azul@mail.com',
+    pass: 'user123'
+},
+{
+    nombre: 'Betiana',
+    mail: 'beti@mail.com',
+    pass: 'tite25'
+},
+{
+    nombre: 'Carlos',
+    mail: 'carlos@mail.com',
+    pass: 'sanlore2002'
+}];
+
+const mailLogin = document.getElementById("emailAddress")
+        passLogin = document.getElementById("password")
+        btnLogin = document.getElementById("btnLogin");
+
+function guardarDatos(usuarioDB, storage){
+    const usuario ={
+        "name": usuarioDB.nombre,
+        "user": usuarioDB.mail,
+        "pass": usuarioDB.pass,
+    }
+    localStorage.setItem("usuario",JSON.stringify(usuario));
+}
+
+function borrarDatos() {
+    localStorage.clear();
+    sessionStorage.clear();
+}
+
+function recuperarUsuario(storage) {
+    let usuarioEnStorage = JSON.parse(storage.getItem('usuario'));
+    return usuarioEnStorage;
+}
+
+function saludar(usuario){
+    nombreUsuario.innerHTML = `Bienvenido/a, <span>${usuario.name}</span>`
+}
+
+function estaLogueado(usuario){
+    if(usuario) {
+        saludar(usuario)
+    }else{
+        return false;
+    }
+}
+function validarUsuario(usersDB, user, pass) {
+    let encontrado = usersDB.find((userDB)=> userDB.mail==user);
+    if(typeof encontrado === "undefined"){
+        return false;
+    }else{ 
+        if(encontrado.pass !=pass){
+            return false;
+        }else{
+            return encontrado;
+        }
+    }
+}
+
+btnLogin.addEventListener("click", (e)=> {
+    e. preventDefault();
+    if( !mailLogin.value|| !passLogin.value){
+        alert("Todo los campos deben ser completados");
+    }else{ let data = validarUsuario(usuarios, mailLogin.value, passLogin.value);
+        if (!data){
+            alert("Usuario y/o contraseña son erroneos, por favor intentalo nuevamente");
+        }else {
+            if (recordar.checked){
+                guardarDatos(data, localStorage);
+                saludar(recuperarUsuario(localStorage));
+            }else{
+                guardarDatos(data, sessionStorage);
+                saludar(recuperarUsuario(sessionStorage));
+            }
+        }
+    }
+});

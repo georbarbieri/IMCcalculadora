@@ -182,7 +182,12 @@ calcBtn.addEventListener("click", (e) => {
 });
 
 let h3 = document.getElementById("saludo")
-h3.innerText =`Logueado como ${localStorage.getItem("email")}`;
+h3.innerText =`Logueado como ${localStorage.getItem("email")}`
+$(document).ready(function() {
+    setTimeout(function() {
+        $("saludo").fadeOut(1500);
+    },3000);});
+
 
 
 clearBtn.addEventListener("click", (e) => {
