@@ -65,6 +65,8 @@ const imcInfo = document.querySelector("#imc-info span");
 
 const backBtn = document.querySelector("#back-btn");
 
+const closeBtn= document.querySelector("#cerrar-sesion");
+
 /*Funciones*/
 
 
@@ -102,6 +104,10 @@ function calcImc(peso, altura) {
     return imc
 }
 
+function borrarDatos() {
+    localStorage.clear();
+    sessionStorage.clear();
+}
 
 function cleanInputs() {
     alturaInput.value = "";
@@ -132,8 +138,7 @@ calcBtn.addEventListener("click", (e) => {
 
     if (!peso || !altura) return;
     const imc =calcImc(peso, altura);
-    console.log(peso)
-    console.log(altura)
+
     let info;
     data.forEach((item)=> {
         if (imc >= item.min && imc <=item.max) {
@@ -145,7 +150,6 @@ calcBtn.addEventListener("click", (e) => {
     if (!info) return;
     imcNumero.innerText = imc;
     imcInfo.innerText = info;
-    console.log(info)
     switch (info){
         case "Bajopeso":
             imcNumero.classList.add("low");
@@ -181,19 +185,39 @@ calcBtn.addEventListener("click", (e) => {
     showOrHideResultado();
 });
 
+
+
 let h3 = document.getElementById("saludo")
-h3.innerText =`Logueado como ${localStorage.getItem("email")}`
-$(document).ready(function() {
-    setTimeout(function() {
-        $("saludo").fadeOut(1500);
-    },3000);});
-
-
+h3.innerText =`Logueado como ${localStorage.getItem("email")}`;
 
 clearBtn.addEventListener("click", (e) => {
     e.preventDefault();
     cleanInputs();
 });
+
+closeBtn.addEventListener("click", (e)=>{
+    e.preventDefault();
+    swal.fire({
+            icon: "warning",
+            title: "¿ESTAS SEGURO DE CERRAR SESIÓN?",
+            text: "¡Si desea puede permanecer en la página!",
+            cancelButtonColor: '#3085d6',
+            cancelButtonText: "Cancelar",
+            confirmButtonColor: '#d33',
+            confirmButtonText: "Si, estoy seguro!",
+            showCancelButton: true,
+            showConfirmButton: true,
+        } ).then(function(result){
+            if(result.value){
+                window.location = "index.html";
+                borrarDatos();
+                showOrHideResultado();
+                cleanInputs();
+            }else{
+                return false;
+            }
+        })
+    });
 
 backBtn.addEventListener("click", (e) => {
     cleanInputs();

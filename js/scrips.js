@@ -1,87 +1,30 @@
-document.getElementById("btn-iniciarSesion").addEventListener("click",iniciarSesion);
-document.getElementById("btn-registrarse").addEventListener("click", register);
-window.addEventListener("resize", anchoPagina);
 
 
-//declaracion de variables
+
 var formulario_login = document.querySelector(".formularioLogin");
-var formulario_registro =document.querySelector(".formularioRegistro");
 var contenedorLogin_Registro =document.querySelector(".contenedorLoginRegistro");
-var caja_traseraLogin = document.querySelector(".cajaTraseraLogin");
-var caja_traseraRegistro = document.querySelector(".cajaTraseraRegistro");
 
-function anchoPagina(){
-    if(window.innerWidth >850){
-        caja_traseraLogin.style.display= "block";
-        caja_traseraRegistro.style.display="block";
-    }else{
-        caja_traseraRegistro.style.display="block";
-        caja_traseraRegistro.style.opacity="1";
-        caja_traseraLogin.style.display="none";
-        formulario_login.style.display="block";
-        formulario_registro.style.display="none"
-        contenedorLogin_Registro.style.left="0px"
-    }
-}
-
-anchoPagina();
-
-function iniciarSesion (){
-    
-    if(window.innerWidth >850){
-        formulario_registro.style.display = "none";
-        contenedorLogin_Registro.style.left="10px";
-        formulario_login.style.display="block";
-        caja_traseraRegistro.style.opacity ="1";
-        caja_traseraLogin.style.opacity="0";
-    }else{
-        formulario_registro.style.display = "none";
-        contenedorLogin_Registro.style.left="0px";
-        formulario_login.style.display="block";
-        caja_traseraRegistro.style.display ="block";
-        caja_traseraLogin.style.display="none";
-    }
-    
-    
-}
-
-function register (){
-    if(window.innerWidth>850){
-        formulario_registro.style.display = "block";
-        contenedorLogin_Registro.style.left="410px";
-        formulario_login.style.display="none";
-        caja_traseraRegistro.style.opacity ="0";
-        caja_traseraLogin.style.opacity="1";
-    }else{
-        formulario_registro.style.display = "block";
-        contenedorLogin_Registro.style.left="0px";
-        formulario_login.style.display="none";
-        caja_traseraRegistro.style.display ="none";
-        caja_traseraLogin.style.display="block";
-        caja_traseraLogin.style.opacity="1";
-    }
-    
-}
 
 const usuarios = [{
-    nombre: 'Azul',
-    mail: 'azul@mail.com',
-    pass: 'user123'
+    nombre: 'User',
+    mail: 'user@mail.com',
+    pass: 'user123',
 },
 {
-    nombre: 'Betiana',
-    mail: 'beti@mail.com',
-    pass: 'tite25'
+    nombre: 'Georgina',
+    mail: 'geor@mail.com',
+    pass: 'geor1908',
 },
 {
-    nombre: 'Carlos',
-    mail: 'carlos@mail.com',
-    pass: 'sanlore2002'
+    nombre: 'Sabrina',
+    mail: 'sabricba22@mail.com',
+    pass: 'belgrano22',
 }];
 
 const mailLogin = document.getElementById("emailAddress")
-        passLogin = document.getElementById("password")
-        btnLogin = document.getElementById("btnLogin");
+            passLogin = document.getElementById("password")
+            btnLogin = document.getElementById("btnLogin")
+
 
 function guardarDatos(usuarioDB, storage){
     const usuario ={
@@ -92,16 +35,11 @@ function guardarDatos(usuarioDB, storage){
     localStorage.setItem("usuario",JSON.stringify(usuario));
 }
 
-function borrarDatos() {
-    localStorage.clear();
-    sessionStorage.clear();
-}
-
 function recuperarUsuario(storage) {
     let usuarioEnStorage = JSON.parse(storage.getItem('usuario'));
     return usuarioEnStorage;
 }
-
+/*
 function saludar(usuario){
     nombreUsuario.innerHTML = `Bienvenido/a, <span>${usuario.name}</span>`
 }
@@ -112,7 +50,7 @@ function estaLogueado(usuario){
     }else{
         return false;
     }
-}
+}*/
 function validarUsuario(usersDB, user, pass) {
     let encontrado = usersDB.find((userDB)=> userDB.mail==user);
     if(typeof encontrado === "undefined"){
@@ -136,11 +74,28 @@ btnLogin.addEventListener("click", (e)=> {
         }else {
             if (recordar.checked){
                 guardarDatos(data, localStorage);
-                saludar(recuperarUsuario(localStorage));
+                modal(recuperarUsuario(localStorage));
+            
             }else{
                 guardarDatos(data, sessionStorage);
-                saludar(recuperarUsuario(sessionStorage));
+                modal(recuperarUsuario(sessionStorage));
+                
             }
         }
     }
 });
+
+function modal () {
+        swal.fire({
+            title: "Bienvenido/a a nuestra página!",
+            text: `Te logueaste como ${localStorage.getItem("email")}` ,
+            type: "success"
+        }).then(function() {
+            window.location = "index.html";
+        });
+}
+
+
+btnBorrar.addEventListener("click", (e)=>{
+    borrarDatos();
+})
