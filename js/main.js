@@ -182,6 +182,8 @@ calcBtn.addEventListener("click", (e) => {
 
     showOrHideResultado();
 });
+
+
 const productos = [ ]
 let carrito = JSON.parse(localStorage.getItem("carrito") ) || [ ]
 
@@ -194,7 +196,7 @@ class Producto {
         this.ingredientes=ingredientes
     }
     desplegarProducto(){`
-        const vianda = <div class="card">
+        const card = <div class="card">
         <p>${this.nombre}</p>
         <div><img src="${this.img}" alt="" class="imgVianda"></div>
         <div><p>$${this.precio}</p>
@@ -204,21 +206,20 @@ class Producto {
             <button id=${this.id} class="btnAgregar"> Agregar al carrito</button>
         </div>
     </div>`
-    const contenedor = document.getElementById('contenedorCard')
+    const contenedorCard = document.getElementById('contenedorCard')
     contenedorCard.innerHTML += card
     }
     agregarEvento (){
-        const btnAgregar =document.getElementById(`$this.id`)
-        const finderProduct = producto.find( p=> p.id== this.id)
+        const btnAgregar =document.getElementById(`${this.id}`)
+        const finderProduct = producto.find( p => p.id == this.id)
         btnAgregar.addEventListener("click", () => agregarAlCarrito(finderProduct))
     }
 }
 
-
-fetch('./api.json')
+fetch('./js/api.json')
     .then(res => res.json())
-    .then(datas=> {
-            datas.forEach( prod =>{
+    .then(data=> {
+            data.forEach( prod =>{
                 let newProd = new Producto (prod.id, prod.nombre, prod.precio, prod.img, prod.ingredientes)
                 productos.push(newProd)
             })
@@ -232,6 +233,8 @@ fetch('./api.json')
     .catch( err =>console.log(err));
 
 function agregarAlCarrito(producto){
+    console.log(producto)
+    
     const enCarrito = carrito.find(prod=> prod.id=== producto.id)
 
     if(!enCarrito){
@@ -246,11 +249,13 @@ function agregarAlCarrito(producto){
                 cantidad: cantidad +1
             }
         ]
+        localStorage.setItem('carrito',JSON.stringify(carrito))
     }
-
-
-    console.log(enCarrito);
+    contador.innerHTML= carrito.reduce((acc, prod)=> acc + prod.cantidad,0 )
 }
+    const contador = document.getElementById('cartCounter')
+    contador.innerHTML= carrito.reduce((acc, prod)=> acc + prod.cantidad,0 )
+
 
 let h3 = document.getElementById("saludo")
 h3.innerText =`Logueado como ${localStorage.getItem("email")}`;
