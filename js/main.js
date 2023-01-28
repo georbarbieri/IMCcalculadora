@@ -195,24 +195,23 @@ class Producto {
         this.img =img,
         this.ingredientes=ingredientes
     }
-    desplegarProducto(){`
-        const card = <div class="card">
-        <p>${this.nombre}</p>
-        <div><img src="${this.img}" alt="" class="imgVianda"></div>
-        <div><p>$${this.precio}</p>
-        </div>
-        <div><p>${this.ingredientes}</p></div>
-        <div class="btn-container">
-            <button id=${this.id} class="btnAgregar"> Agregar al carrito</button>
-        </div>
+    desplegarProducto(){
+        const card =` <div class="card">
+        <p class="tituloVianda">${this.nombre}</p>
+        <img src="${this.img}" alt="" class="imgVianda">
+        <p>$${this.precio}</p>
+        <p>${this.ingredientes}</p>
+        <button id=${this.id} class="btnAgregar"> Agregar al carrito</button>
+        
     </div>`
     const contenedorCard = document.getElementById('contenedorCard')
     contenedorCard.innerHTML += card
     }
     agregarEvento (){
         const btnAgregar =document.getElementById(`${this.id}`)
-        const finderProduct = producto.find( p => p.id == this.id)
+        const finderProduct = productos.find( p => p.id == this.id)
         btnAgregar.addEventListener("click", () => agregarAlCarrito(finderProduct))
+        
     }
 }
 
@@ -233,29 +232,34 @@ fetch('./js/api.json')
     .catch( err =>console.log(err));
 
 function agregarAlCarrito(producto){
-    console.log(producto)
     
-    const enCarrito = carrito.find(prod=> prod.id=== producto.id)
-
+    const enCarrito = carrito.find(prod=> prod.id === producto.id)
+    console.log(enCarrito)
+    
     if(!enCarrito){
         carrito.push ({...producto, cantidad: 1})
         localStorage.setItem('carrito', JSON.stringify(carrito))
     }else{
-        let carritoFiltrado = carrito.filter( prod.id != enCarrito.id)
+        let carritoFiltrado = carrito.filter( prod => prod.id != enCarrito.id)
         carrito = [
             ...carritoFiltrado,
             {
                 ...enCarrito,
-                cantidad: cantidad +1
-            }
+                cantidad: enCarrito.cantidad +1
+            },
+            Swal.fire(
+                'Agregado al carrito!',
+                'El elemento ha sido agregado al carrito.',
+                'success'
+                ),
         ]
-        localStorage.setItem('carrito',JSON.stringify(carrito))
+        localStorage.setItem('carrito', JSON.stringify(carrito))
     }
-    contador.innerHTML= carrito.reduce((acc, prod)=> acc + prod.cantidad,0 )
+    console.log(carrito)
+    contador.innerHTML= carrito.reduce((acc, prod)=> acc + prod.cantidad, 0 )
 }
     const contador = document.getElementById('cartCounter')
-    contador.innerHTML= carrito.reduce((acc, prod)=> acc + prod.cantidad,0 )
-
+    contador.innerHTML = carrito.reduce((acc, prod)=> acc + prod.cantidad, 0 )
 
 let h3 = document.getElementById("saludo")
 h3.innerText =`Logueado como ${localStorage.getItem("email")}`;
@@ -293,4 +297,3 @@ backBtn.addEventListener("click", (e) => {
     cleanInputs();
     showOrHideResultado();
 });  
-
