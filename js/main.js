@@ -43,8 +43,6 @@ const data = [
     },
 ];
 
-/*Seleccion de elementos*/
-
 const   imcTabla = document.querySelector("#imc-tabla");
 
 const alturaInput = document.querySelector("#altura");
@@ -184,8 +182,58 @@ calcBtn.addEventListener("click", (e) => {
 
     showOrHideResultado();
 });
+const productos = [ ]
+let carrito = JSON.parse(localStorage.getItem("carrito") ) || [ ]
+
+class Producto {
+    constructor (id, nombre, precio, img, ingredientes){
+        this.id =id,
+        this.nombre = nombre,
+        this.precio= precio,
+        this.img =img,
+        this.ingredientes=ingredientes
+    }
+    desplegarProducto(){`
+        const vianda = <div class="card">
+        <p>${this.nombre}</p>
+        <div><img src="${this.img}" alt="" class="imgVianda"></div>
+        <div><p>$${this.precio}</p>
+        </div>
+        <div><p>${this.ingredientes}</p></div>
+        <div class="btn-container">
+            <button id=${this.id} class="btnAgregar"> Agregar al carrito</button>
+        </div>
+    </div>`
+    const contenedor = document.getElementById('contenedorCard')
+    contenedorCard.innerHTML += card
+    }
+    agregarEvento (){
+        const btnAgregar =document.getElementById(`$this.id`)
+        const finderProduct = producto.find( p=> p.id== this.id)
+        btnAgregar.addEventListener("click", () => agregarAlCarrito(finderProduct))
+    }
+}
 
 
+fetch('./api.json')
+    .then(res => res.json())
+    .then(datas=> {
+            datas.forEach( prod =>{
+                let newProd = new Producto (prod.id, prod.nombre, prod.precio, prod.img, prod.ingredientes)
+                productos.push(newProd)
+            })
+            productos.forEach (e=>{
+                e.desplegarProducto()
+            })
+            productos.forEach( e => {
+                e.agregarEvento()
+            })
+        })
+    .catch( err =>console.log(err));
+
+function agregarAlCarrito(productos){
+    console.log("aprete el carrito")
+}
 
 let h3 = document.getElementById("saludo")
 h3.innerText =`Logueado como ${localStorage.getItem("email")}`;
