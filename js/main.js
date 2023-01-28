@@ -231,8 +231,25 @@ fetch('./api.json')
         })
     .catch( err =>console.log(err));
 
-function agregarAlCarrito(productos){
-    console.log("aprete el carrito")
+function agregarAlCarrito(producto){
+    const enCarrito = carrito.find(prod=> prod.id=== producto.id)
+
+    if(!enCarrito){
+        carrito.push ({...producto, cantidad: 1})
+        localStorage.setItem('carrito', JSON.stringify(carrito))
+    }else{
+        let carritoFiltrado = carrito.filter( prod.id != enCarrito.id)
+        carrito = [
+            ...carritoFiltrado,
+            {
+                ...enCarrito,
+                cantidad: cantidad +1
+            }
+        ]
+    }
+
+
+    console.log(enCarrito);
 }
 
 let h3 = document.getElementById("saludo")
