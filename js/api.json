@@ -1,0 +1,33 @@
+[
+    {
+        "id" : "1",
+        "title" : "Vianda Vegana",
+        "precio" : "899",
+        "ingredientes": "Contiene: Verduras estacionales con mix de semillas, tofú y legumbres",
+        "img": "https://www.essapp.coop/sites/www.essapp.coop/files/styles/imagen_listados/public/img_1677-1.jpg?itok=56GTRyr9"
+    },{
+        "id" : "2",
+        "title" : "Vianda Vegetariana",
+        "precio" : "850",
+        "ingredientes": "Contiene: Verduras estacionales con mix de semillas, huevo, lacteos, tofú y legumbres",
+        "img": "https://img.itinari.com/page/content/original/e5749aa8-4bce-496a-8ee3-c1347fb3d8b8-hamburger-2856548_1280.jpg?ch=DPR&dpr=2.625&w=994&s=f94ddfb8e6f40f41ff1580350aa25e0b"
+    },{
+        "id" : "3",
+        "title" : "Vianda Proteica",
+        "precio" : "950",
+        "ingredientes": "Contiene: Verduras estacionales con mix de semillas, huevo, lacteos, diferentes tipos de carne, legumbres y aliimentos altos en proteinas",
+        "img": "https://i2.wp.com/www.doquier.com.ar/wp/wp-content/uploads/2019/04/viandas-4.jpg?resize=600%2C388&ssl=1"
+    },{
+        "id" : "4",
+        "title" : "Vianda Saludable",
+        "precio" : "899",
+        "ingredientes": "Contiene: Verduras estacionales con mix de semillas, huevo, lacteos, diferentes tipos de carne y legumbres",
+        "img": "https://i.pinimg.com/236x/6b/b6/e7/6bb6e702e6eadace79d2eb802da26a48.jpg"
+    },{
+        "id" : "5",
+        "title" : "Vianda Sin Tacc",
+        "precio" : "950",
+        "ingredientes": "Contiene: Verduras estacionales con mix de semillas, huevo, lacteos, diferentes tipos de carne y legumbres, todo libre de gluten",
+        "img": "https://www.circuitogastronomico.com/wp-content/uploads/2020/05/97878354_247209599960862_5572226982021178519_n.jpg"
+    }
+]

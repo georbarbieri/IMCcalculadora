@@ -39,18 +39,6 @@ function recuperarUsuario(storage) {
     let usuarioEnStorage = JSON.parse(storage.getItem('usuario'));
     return usuarioEnStorage;
 }
-/*
-function saludar(usuario){
-    nombreUsuario.innerHTML = `Bienvenido/a, <span>${usuario.name}</span>`
-}
-
-function estaLogueado(usuario){
-    if(usuario) {
-        saludar(usuario)
-    }else{
-        return false;
-    }
-}*/
 function validarUsuario(usersDB, user, pass) {
     let encontrado = usersDB.find((userDB)=> userDB.mail==user);
     if(typeof encontrado === "undefined"){
@@ -70,17 +58,12 @@ btnLogin.addEventListener("click", (e)=> {
         alert("Todo los campos deben ser completados");
     }else{ let data = validarUsuario(usuarios, mailLogin.value, passLogin.value);
         if (!data){
-            alert("Usuario y/o contraseña son erroneos, por favor intentalo nuevamente");
-        }else {
-            if (recordar.checked){
-                guardarDatos(data, localStorage);
-                modal(recuperarUsuario(localStorage));
-            
-            }else{
-                guardarDatos(data, sessionStorage);
-                modal(recuperarUsuario(sessionStorage));
-                
-            }
+            swal.fire({
+                title: "Error!",
+                text: "Usuario y/o contraseña son erroneos, por favor intentalo nuevamente",
+                type: "warning"
+            })}else {
+                modal()
         }
     }
 });

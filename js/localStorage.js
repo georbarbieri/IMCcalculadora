@@ -9,7 +9,7 @@ btnLogin.addEventListener('click',()=>{
     localStorage.setItem('password',contraseña.value);
 });
 
-function guardarDatos(storage) {
+function guardarDatos(localStorage) {
 
     let user = document.getElementById('emailAddress').value;
     let pass = document.getElementById('password').value;
@@ -21,4 +21,8 @@ function guardarDatos(storage) {
 
     localStorage.setItem('user', JSON.stringify(usuario))
     localStorage.setItem('password', JSON.stringify(usuario))
+}
+
+function guardarLocalStorage(){
+    localStorage.setItem("carrito", JSON.stringify(carrito))
 }

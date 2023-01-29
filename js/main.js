@@ -42,9 +42,7 @@ const data = [
         obesidad: "3",
     },
 ];
-
-/*Seleccion de elementos*/
-
+const cartIcon = document.querySelector(".cart")
 const   imcTabla = document.querySelector("#imc-tabla");
 
 const alturaInput = document.querySelector("#altura");
@@ -66,8 +64,6 @@ const imcInfo = document.querySelector("#imc-info span");
 const backBtn = document.querySelector("#back-btn");
 
 const closeBtn= document.querySelector("#cerrar-sesion");
-
-/*Funciones*/
 
 
 function createTabla(data) {
@@ -122,7 +118,6 @@ function showOrHideResultado(){
 createTabla(data);
 
 
-//Eventos
 [alturaInput, pesoInput].forEach((el) =>{
     el.addEventListener("input", (e)=> {
         const updateValue = validDigits(e.target.value);
@@ -150,6 +145,7 @@ calcBtn.addEventListener("click", (e) => {
     if (!info) return;
     imcNumero.innerText = imc;
     imcInfo.innerText = info;
+    console.log(info)
     switch (info){
         case "Bajopeso":
             imcNumero.classList.add("low");
@@ -184,7 +180,6 @@ calcBtn.addEventListener("click", (e) => {
 
     showOrHideResultado();
 });
-
 
 
 let h3 = document.getElementById("saludo")
@@ -223,4 +218,3 @@ backBtn.addEventListener("click", (e) => {
     cleanInputs();
     showOrHideResultado();
 });  
-
